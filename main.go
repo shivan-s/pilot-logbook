@@ -16,7 +16,7 @@ type Page struct {
 
 func loadPage(title string) (*Page, error) {
 	filename := title + ".html"
-	body, err := os.ReadFile("templates/" + filename)
+	body, err := os.ReadFile("./web/templates/" + filename)
 	if err != nil {
 		return nil, err
 	}
@@ -24,7 +24,7 @@ func loadPage(title string) (*Page, error) {
 }
 
 func renderTemplate(w http.ResponseWriter, tmpl string, p *Page) {
-	t, _ := template.ParseFiles("templates/" + tmpl + ".html")
+	t, _ := template.ParseFiles("./web/templates/" + tmpl + ".html")
 	t.Execute(w, p)
 }
 
